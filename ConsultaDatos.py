@@ -50,23 +50,29 @@ def lectorGruposUsuarios(nombreUsuario, passUsuario):
 def envioQuery(grupof):
     #Archivo que contiene clave de acceso de usuario autorizado a BD (archivo protegido desde sistema base)
     fichero_1 = open('./clave_db.txt', mode="r")
-    #Archivo que contiene llave de cifrado de datos sensibles (archivo protegido desde sistema base)
-    fichero_2 = open('./clave_datos_sensibles.txt', mode="r")
-    #Cargue de pass en variables
     contrasena_db = fichero_1.read()
-    contrasena = (fichero_2.read()).strip()
-
+    
     #Intente coneccion a BD con los parametros definidos
     try:
-        connection = mysql.connector.connect(host='localhost',
-                                         database='ML_DB',
-                                         user='root',
-                                         password=contrasena_db)
+        connection = mysql.connector.connect(host='127.0.0.1',
+                                             port=3306,
+                                             database='ML_DB',
+                                             user='root',
+                                             password=contrasena_db,
+                                             #ssl_ca="ca.pem", 
+                                             #ssl_verify_cert=True
+                                             )
         #Si el grupo es administradores, realice query con contraseña cargada desde archivo protegido para descifrado de todos los datos
         if(grupof=="Administradores"):
+            #Archivo que contiene llave de cifrado de datos sensibles (archivo protegido desde sistema base)
+            fichero_2 = open('./clave_datos_sensibles.txt', mode="r")
+            contrasena = (fichero_2.read()).strip()
             sql_select_Query = 'SELECT id, user_name, fec_alta, codigo_zip, aes_decrypt(unhex(credit_card_num),"'+contrasena+'"), aes_decrypt(unhex(credit_card_ccv),"'+contrasena+'"), aes_decrypt(unhex(cuenta_numero),"'+contrasena+'"), aes_decrypt(unhex(direccion),"'+contrasena+'"), aes_decrypt(unhex(geo_latitud),"'+contrasena+'"), aes_decrypt(unhex(geo_longitud),"'+contrasena+'"), color_favorito, aes_decrypt(unhex(foto_dni),"'+contrasena+'"), aes_decrypt(unhex(ip),"'+contrasena+'"), auto, auto_modelo, auto_tipo, auto_color, cantidad_compras_realizadas, avatar, fec_birthday FROM ml_tb'
         #Si el grupo es cartera, realice query con contraseña cargada desde archivo protegido para descifrado de algunos datos
         if(grupof=="Cartera"):
+            #Archivo que contiene llave de cifrado de datos sensibles (archivo protegido desde sistema base)
+            fichero_2 = open('./clave_datos_sensibles.txt', mode="r")
+            contrasena = (fichero_2.read()).strip()
             sql_select_Query = 'SELECT id, user_name, fec_alta, codigo_zip, credit_card_num, credit_card_ccv, cuenta_numero, aes_decrypt(unhex(direccion),"'+contrasena+'"), aes_decrypt(unhex(geo_latitud),"'+contrasena+'"), aes_decrypt(unhex(geo_longitud),"'+contrasena+'"), color_favorito, aes_decrypt(unhex(foto_dni),"'+contrasena+'"), aes_decrypt(unhex(ip),"'+contrasena+'"), auto, auto_modelo, auto_tipo, auto_color, cantidad_compras_realizadas, avatar, fec_birthday FROM ml_tb'
         #Si el grupo es reportes, realice query sin contraseña, todos los datos los devolvera cifrados
         if(grupof=="Reportes"):
