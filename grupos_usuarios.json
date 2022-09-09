@@ -1,0 +1,50 @@
+[
+    {
+        "grupo": "Administradores",
+        "pass": "1c142b2d01aa34e9a36bde480645a57fd69e14155dacfab5a3f9257b77fdc8d8",
+        "salt": "12345",
+        "usuario": "admin2"
+    },
+    {
+        "grupo": "Cartera",
+        "pass": "79eb0fa86a5dc7f46fe4ecf99aae871b2d1c2deb4b382b3d8da057840ac7115b",
+        "salt": "12345",
+        "usuario": "cartera1"
+    },
+    {
+        "grupo": "Cartera",
+        "pass": "4139b272cb878e78e7000aa21b76d37edd6aaa29144d7ccb4f75327d444c29cf",
+        "salt": "12345",
+        "usuario": "cartera2"
+    },
+    {
+        "grupo": "Reportes",
+        "pass": "1645a130998fad9863020b28848ccc23f95861cd7a63c4c4c0a89e175159e144",
+        "salt": "12345",
+        "usuario": "auditoria"
+    },
+    {
+        "grupo": "Reportes",
+        "pass": "f74d22179606587c857114666c3e60e855a4171f3b192318d2d75359ab70aedd",
+        "salt": "12345",
+        "usuario": "indicadores"
+    },
+    {
+        "grupo": "Administradores",
+        "pass": "357c576b79c93ef876840071981daf341006a38749238d0c415346cacdf2a0c6",
+        "salt": "-9ZCNpQvvh\u00a1@*Ue1",
+        "usuario": "andres"
+    },
+    {
+        "grupo": "Reportes",
+        "pass": "5bf005179a7b3ad5c5301f6284b2e35d3a93593f2c0f34e36b8071c2da3bd880",
+        "salt": "NSEV,bcxtc+NB/f+",
+        "usuario": "ricardo"
+    },
+    {
+        "grupo": "Administradores",
+        "pass": "9cafe959c7c8e6f7659203fd8e5387171f97b120fb87e7bd60a5f5b365e33535",
+        "salt": "4B6CpO1Erl=!-3ZG",
+        "usuario": "martha"
+    }
+]
