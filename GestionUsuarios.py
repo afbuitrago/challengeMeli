@@ -20,7 +20,7 @@ def crearUsuario():
     #Validara si el pass cumple con los paramtros minimos de seguridad requeridos
     if(validarCompPass(passUsuario)==True): 
         #Validara si el usuario no existe y permite crearlo   
-        if(lectorUsuarios(nombreUsuario) == 1):
+        if(lectorUsuarios(nombreUsuario)==True):
             #Genera un salt de seguridad para el pass
             saltPass = generarSalt()
             #Unifica password del usuario y salt y posterior genera el hash en sha256
@@ -70,15 +70,13 @@ def lectorUsuarios(nombreUsuario):
     #Apertura de diccionario con usuarios
     fichero_1 = open('grupos_usuarios.json')
     usuarios_dic = json.load(fichero_1)
-    permitido = 0
     #Busqueda de usuario
     for usuario_dic in usuarios_dic:
         usuariof = usuario_dic.get('usuario')
         if(nombreUsuario == usuariof):
-            permitido = 0
-            break
-        else: permitido = 1
-    return permitido
+            return False
+            break        
+    return True
 
 #Funcion de generación de salt aleatorio
 def generarSalt():

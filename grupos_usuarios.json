@@ -16,5 +16,11 @@
         "pass": "15362ef54b2573005e43401610458d770847f8bbae3d618f7b7aa6131f34e435",
         "salt": "Z_vZ$gHB8=p!WA+z",
         "usuario": "reporte1"
+    },
+    {
+        "grupo": "Administradores",
+        "pass": "74551c4b8c99df29bf7bafd4a3fcb4afef2920f829eaf6dd86c34543118424ad",
+        "salt": "Q4!s0yLyXr;1DeDy",
+        "usuario": "admin2"
     }
 ]
